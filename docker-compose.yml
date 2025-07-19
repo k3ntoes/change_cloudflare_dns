@@ -1,0 +1,7 @@
+services:
+  app:
+    container_name: update_dns_cf
+    build: .
+    env_file:
+      - .env
+    

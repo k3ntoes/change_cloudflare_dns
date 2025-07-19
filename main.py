@@ -1,4 +1,7 @@
+import time
+
 import requests
+import schedule
 from icecream import ic
 from nslookup import Nslookup
 
@@ -60,7 +63,10 @@ def update_dns(current_ip):
 
 
 if __name__ == "__main__":
+    ic("Application started")
     main()
-    # fetch_old_ip()
-    # fetch_current_ip()
-    # update_dns()
+    # excute every 5 minutes
+    schedule.every(5).minutes.do(main)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
